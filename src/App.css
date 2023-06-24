@@ -1,38 +1,131 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap');
+*{
+    margin: 0;
+    padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.App{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background: #87b5b5;
+    flex: 1;
+    min-height: 100vh;
+    box-sizing: border-box;
+}
+.Editor {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid black;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.TextArea{
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    border: 0.5px solid black;
+}
+.Header_children{
+    display: flex;
+    align-items: center;
+}
+.Header_Area{
+    display: flex;
+    align-items: center;
+    object-fit: contain;
+    position: sticky;
+    padding: 5px;
+    justify-content: space-between;
+    font-size: large;
+    font-weight:bolder;
+    font-family: 'Exo 2', sans-serif;
+    background-color: #4aa3a3;
+    border-bottom: 0.5px solid black;
+}
+.Header_children > img{
+    height: 15px;
+    padding-left: 5px;
+}
+.textarea{
+    background-color: #c0d8d8;
+    padding: 20px;
+    
+}
+.textarea1{
+    font-family: 'IBM Plex Sans', sans-serif;
+    color: #162929;;
+}
+.textarea textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+.textarea h1{
+    border-bottom: 2px solid #224b4b;
+}
+.textarea h2{
+    padding-top: 20px;
+    border-bottom: 1px solid dimgray;
+}
+.textarea h3{
+    margin: revert;
+}
+.textarea > p > code {
+    padding: 3px;
+}
+.textarea code {
+    background: white;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+.textarea blockquote {
+    border-left: 3px solid #224b4b;
+    color: #224b4b;
+    padding-left: 5px;
+    margin-left: 25px;
+}
+.textarea p {
+    margin: 15px 0;
   }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.textarea ul,
+.textarea ol {
+  margin: 10px 0;
+  padding-left: 20px;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.textarea li {
+    margin: 5px 0;
   }
-  to {
-    transform: rotate(360deg);
-  }
+.textarea a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.textarea td, .textarea th {
+    border: 2px solid #224b4b;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.textarea img{
+    display: block;
+    max-width: 90%;
+    margin: 2rem auto;
+}
+.textarea table {
+    border-collapse: collapse;
+}
+
+.textarea pre {
+    display: block;
+    overflow: auto;
+    background: white;
+    padding: 5px;
+    line-height: 1.2;
+}
+.Areas{
+    margin: 10px;
+    box-shadow:1px 0px 5px #323030;
 }
