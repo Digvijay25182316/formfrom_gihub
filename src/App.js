@@ -1,14 +1,13 @@
+import React from "react";
 import "./App.css";
-import Aprompt from "./Aprompt";
-import Anotherprompt from "./Anotherprompt";
-import { DataProvider } from "./context/DataContext.js";
+import MainPage from "./MainPage";
+import { DataProvider } from "./context/DataContext";
 
 function App() {
   return (
     <DataProvider>
       <div className="App">
-        <Aprompt />
-        <Anotherprompt />
+        <MainPage />
       </div>
     </DataProvider>
   );
