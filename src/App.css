@@ -1,63 +1,58 @@
-@import url('https://fonts.googleapis.com/css2?family=Agdasima&display=swap');
 *{
     margin: 0%;
     padding: 0%;
 }
 
 .App{
+  display: flex;
+  background: #1e555c;
+  color: white;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   height: 100vh;
+}
+
+button{
+  background: #1e555c;
+  border: none;
+}
+
+.clock {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+}
+
+.break-length {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.workWrapper {
+  border: 7px solid #13353a;
+  margin: 20px auto 10px auto;
+  width: 270px;
+  height: 160px;
+  border-radius: 50px;
+  position: relative;
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #c2c2d6;    
 }
 
-.calculator {
-    background-color: black;
-    padding: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-  
-  .display {
-    background-color: black;
-    border-radius: 4px;
-    padding: 10px;
-    font-size: 24px;
-    text-align: right;
-    margin-bottom: 10px;
-    color: white;
-  }
-  
-  .row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .keypad{
-    display: flex;
-    font-size: 18px;
-    text-align: center;
-    cursor: pointer;
-    
-  }
-  .key{
-    border: none;
-    width: 70px;
-    height: 57px;
-    outline: 0.1px solid black;
-    font-size: 20px;
-    font-family: 'Agdasima', sans-serif;
-    font-weight: 800;
-    background: #4d4d4d;
-    color: lightgray;
-    cursor: pointer;
-  }
-  
-  .key:active{
-    outline: 0.1px solid white;
-    width: 72px;
-    height: 59px;
-    position: sticky;
-  }
+.title {
+  font-size: 24px;
+}
+

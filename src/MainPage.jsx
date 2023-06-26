@@ -1,116 +1,119 @@
-import React, { useState } from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import {RiRefreshLine} from "react-icons/ri"
+import {TbPlayerPlayFilled,TbPlayerPauseFilled} from "react-icons/tb"
+import {BiDownArrowAlt,BiUpArrowAlt} from "react-icons/bi"
 
-const Calculator = () => {
-  const [displayValue, setDisplayValue] = useState('0');
-  const [disabled,setDisabled]=useState(false)
-  const [firstOperand, setFirstOperand] = useState(null);
-  const [operator, setOperator] = useState(null);
-  const [waitingForSecondOperand, setWaitingForSecondOperand] = useState(false);
 
-  if(displayValue.length===20){
-    setDisabled(!disabled)
-    setDisplayValue("Limit Reached")
+const Clock = () => {
+  const [workTime, setWorkTime] = useState(1500); // 25 minutes in seconds
+  const [breakTime, setBreakTime] = useState(300); // 5 minutes in seconds
+  const [sessionLength, setSessionLength] = useState(1500); // 5 minutes in seconds
+  const [isBreak, setIsBreak] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
+
+
+  const handleIncreaseBreak =()=>{
+    if(isPaused){
+    setBreakTime(breakTime+60)
+    }
   }
-
-  const inputDigit = (digit) => {
-    if (waitingForSecondOperand) {
-      setDisplayValue(String(digit));
-      setWaitingForSecondOperand(false);
-    } else {
-      setDisplayValue(displayValue === '0' ? String(digit) : displayValue + digit);
+  const handleDecreaseBreak =()=>{
+    if(isPaused){
+    setBreakTime(breakTime-60)
     }
+  }
+  const handleIncreaseSession =()=>{
+    if(isPaused){
+    let workTimeUpdate = sessionLength + 60
+    setSessionLength(workTimeUpdate)
+    setWorkTime(workTimeUpdate)
+    }
+  }
+  const handleDecreaseSession =()=>{
+    if(isPaused){
+      let workTimeUpdate = sessionLength - 60
+      setSessionLength(workTimeUpdate)
+      setWorkTime(workTimeUpdate)
+    }
+  }
+  
+  useEffect(() => {
+    let timer;
+    const currentTime = isBreak ? breakTime : workTime;
+
+    if (currentTime > 0 && !isPaused) {
+      timer = setInterval(() => {
+        if (isBreak) {
+          setBreakTime((prevTime) => prevTime - 1);
+        } else {
+          setWorkTime((prevTime) => prevTime - 1);
+        }
+      }, 1000);
+    } else if (currentTime === 0) {
+      setIsBreak((prevIsBreak) => !prevIsBreak);
+      if (isBreak) {
+        setBreakTime(300); // Reset break time to 5 minutes
+      } else {
+        setWorkTime(1500); // Reset work time to 25 minutes
+      }
+    }
+
+    return () => clearInterval(timer);
+  }, [workTime, breakTime, isBreak, isPaused]);
+
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  const inputDecimal = () => {
-    if (!displayValue.includes('.')) {
-      setDisplayValue(displayValue + '.');
-    }
+  const handlePauseResume = () => {
+    setIsPaused((prevIsPaused) => !prevIsPaused);
   };
 
-  const clearDisplay = () => {
-    setDisplayValue('0');
-    setDisabled(!disabled)
-    setFirstOperand(null);
-    setOperator(null);
-    setWaitingForSecondOperand(false);
-  };
-
-  const performOperation = (nextOperator) => {
-    const inputValue = parseFloat(displayValue);
-
-    if (firstOperand === null) {
-      setFirstOperand(inputValue);
-    } else if (operator) {
-      const result = calculate(firstOperand, inputValue, operator);
-      setDisplayValue(String(result));
-      setFirstOperand(result);
-    }
-
-    setWaitingForSecondOperand(true);
-    setOperator(nextOperator);
-  };
-
-  const calculate = (firstOperand, secondOperand, operator) => {
-    switch (operator) {
-      case '+':
-        return firstOperand + secondOperand;
-      case '-':
-        return firstOperand - secondOperand;
-      case '*':
-        return firstOperand * secondOperand;
-      case '/':
-        return firstOperand / secondOperand;
-      default:
-        return secondOperand;
-    }
+  const handleRestart = () => {
+    setWorkTime(1500);
+    setBreakTime(300);
+    setIsBreak(false);
+    setIsPaused(true);
+    setSessionLength(1500)
   };
 
   return (
-    <div className="calculator">
-      <div className="display" style={{height:'23px'}}>
-        <p className="upper" style={{fontSize:'15px',color:'yellow'}}>{displayValue}</p>
-        <p className="main">{displayValue}</p>
-      </div>
-      <div className="keypad">
-        <div>
-      <button className='key' onClick={clearDisplay} style={{width: '140px',background: 'rgb(172, 57, 57)'}}>AC</button>
-      <div>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(7)}>7</button>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(8)}>8</button>
-      </div>
-      <div>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(4)}>4</button>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(5)}>5</button>
-      </div>
-      <div>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(1)}>1</button>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(2)}>2</button>
-      </div>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(3)} style={{width: '140px'}}>0</button>
-      </div>
-        <div>
-      <button disabled={disabled} className='key' onClick={()=>performOperation('/')} style={{background:'rgb(102, 102, 102)'}}>/</button>
-      <button disabled={disabled} className='key' onClick={()=>performOperation('*')} style={{background:'rgb(102, 102, 102)'}}>X</button>
-      <div>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(9)}>9</button>
-      <button disabled={disabled} className='key' onClick={()=>performOperation('-')} style={{background:'rgb(102, 102, 102)'}}>-</button>
-      </div>
-      <div>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(6)}>6</button>
-      <button disabled={disabled} className='key' onClick={()=>performOperation('+')} style={{background:'rgb(102, 102, 102)'}}>+</button>
-      </div>
-      <div style={{display:'flex'}}>
-      <div style={{display:'flex',flexDirection:'column'}}>
-      <button disabled={disabled} className='key' onClick={()=>!disabled&&inputDigit(3)}>3</button>
-      <button disabled={disabled} className='key'onClick={inputDecimal} >.</button>
-      </div>
-      <button disabled={disabled} className='key' onClick={()=>performOperation('=')} style={{height: '114px',background:'rgb(0, 68, 102)'}}>=</button>
+    <div style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center',gap:'10px'}} >
+      <div style={{fontSize: '50px',marginBottom: '20px'}}>25 + 5 Clock</div>
+      <div style={{display:'flex',gap:'40px'}}>
+        <div style={{display:'flex',alignItems:'center',flexDirection:'column'}}>
+        <label>Break Length</label>
+      <div className="break-length">
+        <BiDownArrowAlt onClick={handleDecreaseBreak}/>
+        {breakTime/60}
+        <BiUpArrowAlt onClick={handleIncreaseBreak}/>
       </div>
       </div>
+      <div style={{display:'flex',alignItems:'center',flexDirection:'column'}}>
+        <label>Session Length</label>
+      <div className="break-length">
+        <BiDownArrowAlt onClick={handleDecreaseSession}/>
+        {sessionLength/60}
+        <BiUpArrowAlt onClick={handleIncreaseSession}/>
+      </div>
+      </div>
+      </div>
+    <div className="workWrapper">
+      <h1 className="title">{isBreak ? 'Break' : 'Session'}</h1>
+      <div className="timer" style={{fontFamily: 'digital',fontSize: '80px'}}>{formatTime(isBreak ? breakTime : workTime)}</div>
+    </div>
+      <div className="button-group">
+        <button className="pause-button" onClick={handlePauseResume}>
+          {isPaused ? <TbPlayerPlayFilled style={{fontSize:'36px',color:'white'}}/> : <TbPlayerPauseFilled style={{fontSize:'34px',color:'white'}}/>}
+        </button>
+        <button className="restart-button" onClick={handleRestart}>
+          <RiRefreshLine style={{fontSize:'2em',fontWeight:'bolder',color:'white'}}/>
+        </button>
       </div>
     </div>
   );
 };
 
-export default Calculator;
+export default Clock;
