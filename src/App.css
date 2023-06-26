@@ -1,95 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@500&family=Ysabeau+SC:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Agdasima&display=swap');
 *{
-    margin: 0;
-    padding: 0;
+    margin: 0%;
+    padding: 0%;
 }
+
 .App{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-color: grey;
-    font-family: 'Ysabeau SC', sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #c2c2d6;    
 }
 
-.mainContainer{
-    display: flex;
-    outline: 5px solid orange;
-    width: 600px;
-    align-items: center;
-    background-color: #b3b3b3;
-    justify-content: space-between;
-    padding: 20px;
-    box-shadow: 4px 5px 15px rgb(49, 49, 49);
-    font-family: 'Ysabeau SC', sans-serif;
-}
-.keypad {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-}
-.keypad_Container{
-    max-width: fit-content;
-}
-.key{
-    height: 76px;
-    width: 98px;
-    cursor: pointer;
-    background-color: gray;
-    font-family: 'Ysabeau SC', sans-serif;
-    font-weight: 800;
-}
-
-.logo{
-    display: flex;
-    margin-bottom: 23px;
-    background-color: orange;
-    box-shadow: 4px 5px 15px rgb(49, 49, 49);
-    padding: 6px;
-    border-radius: 5px;    
-}
-
-.key:active{
-    height: 74px;
-    width: 96px;
-    background-color: orange;
-}
-
-@media screen and (max-width:680px){
-    .mainContainer{
-        flex-direction: column;
-        height: 80vh;
-        width: 90vw;
-        padding: 10px;
-    }    
-    .keypad {
-        margin-top: 10px;
-    }
-    .key{
-        height: 50px;
-        width: 72px;
-        font-size: small;
-    }
-    .key:active{
-    height: 48px;
-    width: 70px;
-    }
-}
+.calculator {
+    background-color: black;
+    padding: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
   
-
-@media screen and (max-width:500px){
-    .mainContainer{
-        flex-direction: column;
-        max-height: 100vh;
-        width: fit-content;
-        padding: 10px;
-    }    
-    .key{
-        height: 50px;
-        width: 72px;
-    }
-    .key:active{
-    height: 48px;
+  .display {
+    background-color: black;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 24px;
+    text-align: right;
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .keypad{
+    display: flex;
+    font-size: 18px;
+    text-align: center;
+    cursor: pointer;
+    
+  }
+  .key{
+    border: none;
     width: 70px;
-    }
-}
+    height: 57px;
+    outline: 0.1px solid black;
+    font-size: 20px;
+    font-family: 'Agdasima', sans-serif;
+    font-weight: 800;
+    background: #4d4d4d;
+    color: lightgray;
+    cursor: pointer;
+  }
+  
+  .key:active{
+    outline: 0.1px solid white;
+    width: 72px;
+    height: 59px;
+    position: sticky;
+  }

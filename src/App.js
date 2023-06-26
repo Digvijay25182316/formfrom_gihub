@@ -1,13 +1,16 @@
 import React from "react";
 import "./App.css";
-import MainPage from "./MainPage";
 import { DataProvider } from "./context/DataContext";
+import MainPage from "./MainPage";
 
 function App() {
   return (
     <DataProvider>
       <div className="App">
         <MainPage />
+        <div>
+          <p>coded by digvijay</p>
+        </div>
       </div>
     </DataProvider>
   );
