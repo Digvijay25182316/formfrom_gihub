@@ -254,7 +254,9 @@ const Form = () => {
               alt="GPAY CODE"
             />
           </div>
-
+          <p style={{ fontWeight: "bold", color: "red", fontSize: "20px" }}>
+            wait until you get confermation...
+          </p>
           <button
             onClick={doneHandler}
             style={{
