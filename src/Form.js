@@ -89,7 +89,8 @@ const Form = () => {
         >
           <h2>Picnic Registration Form</h2>
           <p style={{ background: "lightgray", fontSize: "20px" }}>
-            If there is any difficulty or questions, call/message at 99223269444
+            If there is any difficulty or questions, call/message at{" "}
+            <a href="tel:99223269444">99223269444</a>
             (Aarush Prabhu)
           </p>
           <form onSubmit={handleSubmit}>
