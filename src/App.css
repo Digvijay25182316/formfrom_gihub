@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
 *{
     margin: 0%;
     padding: 0%;
@@ -5,54 +6,14 @@
 
 .App{
   display: flex;
-  background: #1e555c;
-  color: white;
-  font-size: 30px;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  height: 100vh;
+  background-color: #f5f5f5;
+  gap: 30px;
+  color: rgb(75, 75, 75);
+  font-family: 'Ubuntu', sans-serif;
 }
 
-button{
-  background: #1e555c;
-  border: none;
+p{
+  font-weight: 300;
 }
-
-.clock {
-  text-align: center;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.button-group {
-  display: flex;
-  justify-content: center;
-}
-
-.break-length {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.workWrapper {
-  border: 7px solid #13353a;
-  margin: 20px auto 10px auto;
-  width: 270px;
-  height: 160px;
-  border-radius: 50px;
-  position: relative;
-  color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.title {
-  font-size: 24px;
-}
-
