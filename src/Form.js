@@ -90,7 +90,7 @@ const Form = () => {
           <h2>Picnic Registration Form</h2>
           <p style={{ background: "lightgray", fontSize: "20px" }}>
             If there is any difficulty or questions, call/message at{" "}
-            <a href="tel:99223269444">99223269444</a>
+            <a href="tel:99223269444">9922326944</a>
             (Aarush Prabhu)
           </p>
           <form onSubmit={handleSubmit}>
@@ -254,8 +254,27 @@ const Form = () => {
               alt="GPAY CODE"
             />
           </div>
-          <p style={{ fontWeight: "bold", color: "red", fontSize: "20px" }}>
-            wait until you get confermation...
+          <p
+            style={{
+              fontWeight: "bold",
+              color: "red",
+              fontSize: "20px",
+              maxWidth: "100%",
+            }}
+            className="after_done"
+          >
+            after clicking{" "}
+            <span
+              style={{
+                background: "gray",
+                border: "1px solid lightgray",
+                padding: "0 5px",
+                borderRadius: "5px",
+              }}
+            >
+              done
+            </span>{" "}
+            wait until you get the confirmation...
           </p>
           <button
             onClick={doneHandler}
