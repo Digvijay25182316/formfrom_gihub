@@ -67,4 +67,8 @@
     .timing{
         font-size: medium;   
        }
+    .Schedule{
+        width: 90vw;
+        font-size: small;
+    }
   }

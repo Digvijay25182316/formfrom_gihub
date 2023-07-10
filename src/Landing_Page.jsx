@@ -39,8 +39,13 @@ function Landingpage() {
           <b>16 July 2023 (Sunday)</b>
           <b>Timing 6 AM to 5 PM</b>
         </div>
+        <div style={{textAlign:"center",margin:"30px"}}>
+          <p style={{color:"red", fontSize:"x-large",fontWeight:"bold"}}>Note :</p>
+          <b style={{fontSize:"20px"}}>For those who do not have their personal transport arrangement, they can board PMT bus from Katraj to Rajgad temple : Bus timing 6.30 am 
+Our volunteers will help you to board PMT bus. We need to reach Katraj bus stop at 6am.</b>
+        </div>
         <div style={{alignItems:"left",padding:"50px"}}>
-          <p style={{textAlign:"center",fontSize:"34px",margin:"40px"}}>Schedule</p>
+          <p style={{textAlign:"center",fontSize:"34px",margin:"40px",fontWeight:"bold"}}>Schedule</p>
       <p className='Schedule'>6:00 AM - Arrange at Katraj Bus Stop</p>
       <p className='Schedule'>6:10 AM to 8 AM - Travel Time to ISCKON Rajgad</p>
       <p className='Schedule'>8 AM - Darshan of Deities</p>
@@ -53,7 +58,7 @@ function Landingpage() {
       <p className='Schedule'>5:00 PM - Leave Back for Katraj</p>
         </div>
         <div style={{alignItems:"left",margin:"23px"}}>
-          <p style={{textAlign:"center",fontSize:"34px",marginBottom:"50px"}}>Thigs to carry</p>
+          <p style={{textAlign:"center",fontSize:"34px",marginBottom:"50px",fontWeight:"bold"}}>Thigs to carry</p>
       <p className='Schedule'>1.Please Carry Extra Cloths,</p>
       <p className='Schedule'>2.Towel & Umbrella or Raincoat</p>
       <p className='Schedule'>3.Carry your Water Bottle for a Trip</p>

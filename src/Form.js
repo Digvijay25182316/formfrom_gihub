@@ -3,7 +3,6 @@ import pay from "./assets/Pay.jpeg";
 import "./Form.css";
 import { db, collection, addDoc } from "./firebase";
 const prabhus = [
-  "Sujay Nimai Prabhu",
   "Vikram Prabhu",
   "Shweta Mataji",
   "HG Hari Kirtan Prabhu",
@@ -21,6 +20,8 @@ const prabhus = [
   "HG Achintya Lila Mataji",
   "HG Srivatsa Chandra Prabhu",
   "HG Jayanand Krishna Prabhu",
+  "Prateek Kumar Prabhu",
+  "Sujay Nimai Prabhu",
 ];
 
 const Form = () => {
@@ -209,7 +210,7 @@ const Form = () => {
                   <option value="">Select an option</option>
                   <option value="Two Wheeler">Two Wheeler</option>
                   <option value="Four Wheeler">Four Wheeler</option>
-                  <option value="none">none</option>
+                  <option value="PMT Bus"> We are coming PMT Bus</option>
                 </select>
                 {errors.travelNeeded && <span>{errors.travelNeeded}</span>}
               </div>
