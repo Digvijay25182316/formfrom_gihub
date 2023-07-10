@@ -1,15 +1,17 @@
 import React, { useState } from "react";
+import pay from "./assets/Pay.jpeg";
 import "./Form.css";
 import { db, collection, addDoc } from "./firebase";
 const Form = () => {
   const [isOpen, setIsOpen] = useState(true);
+  const [isClicked, setIsClicked] = useState(false);
+  const [noOfkids, setNoOfkids] = useState("");
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",
     mentorName: "",
     numberOfMembers: "",
     travelNeeded: "",
-    kidsComing: "",
     questions: "",
   });
 
@@ -28,6 +30,7 @@ const Form = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    formData.noOfkids = noOfkids;
     setIsOpen(!isOpen);
     // Validate form data
     const validationErrors = {};
@@ -43,8 +46,8 @@ const Form = () => {
     if (formData.travelNeeded.trim() === "") {
       validationErrors.travelNeeded = "Travel Needed field is required";
     }
-    if (formData.kidsComing.trim() === "") {
-      validationErrors.kidsComing = "Kids Coming field is required";
+    if (noOfkids.trim() === "") {
+      validationErrors.noOfkids = "Kids Coming field is required";
     }
     setErrors(validationErrors);
 
@@ -54,11 +57,14 @@ const Form = () => {
     }
   };
   const doneHandler = () => {
+    console.log(formData.noOfkids);
     if (formData) {
       storedata(formData)
         .then((data) => {
-          console.log(data.id);
-          window.alert("Form data saved successfully!");
+          setIsClicked(!isClicked);
+          window.alert(
+            "Form data saved successfully!\n JOIN OUR WHATSAPP GROUP FOR FURTHER INFORMATION"
+          );
           // Reset the form
           setFormData({
             fullName: "",
@@ -66,9 +72,9 @@ const Form = () => {
             mentorName: "",
             numberOfMembers: "",
             travelNeeded: "",
-            kidsComing: "",
             questions: "",
           });
+          setNoOfkids("");
         })
         .catch((error) => {
           window.alert("Error saving form data: ", error);
@@ -78,7 +84,7 @@ const Form = () => {
     }
   };
   return (
-    <div style={{ maxWidth: "100vw" }}>
+    <div style={{ maxWidth: "100vw" }} className="container">
       {isOpen ? (
         <div
           style={{
@@ -90,7 +96,7 @@ const Form = () => {
           <h2>Picnic Registration Form</h2>
           <p style={{ background: "lightgray", fontSize: "20px" }}>
             If there is any difficulty or questions, call/message at{" "}
-            <a href="tel:99223269444">9922326944</a>
+            <a href="tel:9175763244">9175763244</a>
             (Aarush Prabhu)
           </p>
           <form onSubmit={handleSubmit}>
@@ -98,7 +104,9 @@ const Form = () => {
               style={{ display: "flex", flexDirection: "column", gap: "28px" }}
             >
               <div>
-                <label htmlFor="fullName">What's Your Full Name?</label>
+                <label htmlFor="fullName">
+                  Full Name<i style={{ color: "red" }}>*</i>
+                </label>
                 <input
                   type="text"
                   id="fullName"
@@ -110,7 +118,9 @@ const Form = () => {
                 {errors.fullName && <span>{errors.fullName}</span>}
               </div>
               <div>
-                <label htmlFor="phoneNumber">What's Your Phone Number?</label>
+                <label htmlFor="phoneNumber">
+                  Phone Number<i style={{ color: "red" }}>*</i>
+                </label>
                 <input
                   type="tel"
                   id="phoneNumber"
@@ -123,17 +133,25 @@ const Form = () => {
               </div>
               <div>
                 <label htmlFor="mentorName">Mentor Name (Optional)</label>
-                <input
-                  type="text"
+                <select
                   id="mentorName"
                   name="mentorName"
                   value={formData.mentorName}
                   onChange={handleChange}
-                />
+                >
+                  <option value={""}>Select an option</option>
+                  <option value={"Sujay Nimai"}>Sujay Nimai</option>
+                  <option value={"Rasamrit Gaur Prabhu"}>
+                    Rasamrit Gaur Prabhu
+                  </option>
+                  <option value={"Mukund Anand Prabhu"}>
+                    Mukund Anand Prabhu
+                  </option>
+                </select>
               </div>
               <div>
                 <label htmlFor="numberOfMembers">
-                  Number of Members Coming (Including yourself)
+                  Number Of Adults(Including yourself)
                 </label>
                 <input
                   type="number"
@@ -148,7 +166,21 @@ const Form = () => {
                 )}
               </div>
               <div>
-                <label htmlFor="travelNeeded">Travel Needed or Not</label>
+                <label htmlFor="kidsComing">No. Of Kids Coming with You</label>
+                <input
+                  type="number"
+                  id="number of kids comming"
+                  name="number of kids comming"
+                  value={noOfkids}
+                  onChange={(e) => setNoOfkids(e.target.value)}
+                  required
+                />
+                {errors.kidsComing && <span>{errors.kidsComing}</span>}
+              </div>
+              <div>
+                <label htmlFor="Do you have your own travel arrangement">
+                  Do you have your own travel arrangement
+                </label>
                 <select
                   id="travelNeeded"
                   name="travelNeeded"
@@ -157,27 +189,15 @@ const Form = () => {
                   required
                 >
                   <option value="">Select an option</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No, I will come by myself.">
-                    No, I will come by myself.
+                  <option value="none">none</option>
+                  <option value="Im Comming By Two Wheeler">
+                    Im Comming By Two Wheeler
+                  </option>
+                  <option value="Im Comming By Four Wheeler">
+                    Im Comming By Four Wheeler
                   </option>
                 </select>
                 {errors.travelNeeded && <span>{errors.travelNeeded}</span>}
-              </div>
-              <div>
-                <label htmlFor="kidsComing">Kids Coming with You</label>
-                <select
-                  id="kidsComing"
-                  name="kidsComing"
-                  value={formData.kidsComing}
-                  onChange={handleChange}
-                  required
-                >
-                  <option value="">Select an option</option>
-                  <option value="Yes">Yes</option>
-                  <option value="No">No</option>
-                </select>
-                {errors.kidsComing && <span>{errors.kidsComing}</span>}
               </div>
               <div>
                 <label htmlFor="questions">
@@ -229,7 +249,7 @@ const Form = () => {
 
             <p>
               If Any Difficulty in Payments, Call/Message to{" "}
-              <a href="tel:99223269444">Aarush Khatri</a>
+              <a href="tel:9175763244">Kishore Dhanwate</a>
             </p>
           </div>
           <div>
@@ -240,19 +260,17 @@ const Form = () => {
             <p>You Can Scan the QR Code also. </p>
           </div>
           <div style={{ display: "flex", gap: "40px" }}>
-            <b>UPI ID : renurk58@okicici </b> <b> GPAY Number : 7666858806 </b>
+            {/* <b>UPI ID : renurk58@okicici </b> <b> GPAY Number : 7666858806 </b> */}
           </div>
           <div>
             <p>
-              IMPORTANT: AFTER PAYMENT PLEASE SENT SCREENSHOT TO AARUSH KHATRI
-              on WHATSAPP <a href="https://wa.me/9922326944">9922326944</a>
+              IMPORTANT: AFTER PAYMENT PLEASE SENT SCREENSHOT TO Kishore
+              Dhanwate on WHATSAPP{" "}
+              <a href="https://wa.me/9175763244">9175763244</a>
             </p>
           </div>
           <div>
-            <img
-              src="https://storage.tally.so/5fa157fc-2d38-4f51-80af-0f8163a6b066/WhatsApp-Image-2022-11-15-at-2.46.06-PM.jpeg"
-              alt="GPAY CODE"
-            />
+            <img src={pay} alt="GPAY CODE" height={"500px"} />
           </div>
           <p
             style={{
@@ -276,25 +294,48 @@ const Form = () => {
             </span>{" "}
             wait until you get the confirmation...
           </p>
-          <button
-            onClick={doneHandler}
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: "10px",
-              alignItems: "center",
-              maxWidth: "max-content",
-              background: "#cac6c6",
-              border: "0.5px solid gray",
-              borderRadius: "5px",
-              padding: "5px",
-              cursor: "pointer",
-              fontSize: "20px",
-            }}
-            id="done"
-          >
-            <b>done</b>
-          </button>
+          {!isClicked ? (
+            <button
+              onClick={doneHandler}
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "10px",
+                alignItems: "center",
+                maxWidth: "max-content",
+                background: "#cac6c6",
+                border: "0.5px solid gray",
+                borderRadius: "5px",
+                padding: "5px",
+                cursor: "pointer",
+                fontSize: "20px",
+              }}
+              id="done"
+            >
+              <b>done</b>
+            </button>
+          ) : (
+            <button
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "10px",
+                alignItems: "center",
+                maxWidth: "max-content",
+                background: "#cac6c6",
+                border: "0.5px solid gray",
+                borderRadius: "5px",
+                padding: "5px",
+                cursor: "pointer",
+                fontSize: "20px",
+              }}
+              id="done"
+            >
+              <a href="https://chat.whatsapp.com/LdRNIb4NA0gG2AIMhheSUc">
+                Join To Our Whatsapp Group
+              </a>
+            </button>
+          )}
         </div>
       )}
     </div>

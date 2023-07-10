@@ -1,13 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
 *{
     margin: 0%;
     padding: 0%;
 }
 
-.App{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.secondApp{
   background-color: #f5f5f5;
   gap: 30px;
   color: rgb(75, 75, 75);
