@@ -18,8 +18,11 @@ function Landingpage() {
         </div>
          <img src={image6} alt='Shril prabhupad' style={{height:"50px",borderRadius:"34px"}}/> 
         </div>
-
+      
         <div style={{width:"90vw",textAlign:"center", fontSize:"8vw" ,marginTop:"10vh"}} ><b>Register for Gita Saar</b><b> Picnic to</b><b> ISKCON RAJGAD</b></div>
+        <div style={{fontSize:"34px",color:"red",background:"yellow", height:"150px",width:"150px", display:"flex",alignItems:"center",justifyContent:"center",borderRadius:"40px"}}>
+          <b>200 /-</b>
+        </div>
         <button style={{textDecorationLine: "underline",fontWeight: "400",fontStyle: "normal",pointerEvents: "all",backgroundColor:"yellow",border:"none",fontSize:"20px",padding:"10px 20px",borderRadius:"20px",marginTop:"50px"}}><a href='/form' className="registerLink">Click Here to Register Now</a></button>
 
         <div style={{display:"flex",flexDirection:"column",alignItems:"center" ,gap:"20px"}}>

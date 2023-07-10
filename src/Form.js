@@ -291,6 +291,21 @@ const Form = () => {
               <a href="https://wa.me/9175763244">9175763244</a>
             </p>
           </div>
+          <div
+            style={{
+              fontSize: "34px",
+              color: "red",
+              background: "yellow",
+              height: "150px",
+              width: "150px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "40px",
+            }}
+          >
+            <b>200 /-</b>
+          </div>
           <div>
             <img src={pay} alt="GPAY CODE" height={"500px"} />
           </div>
