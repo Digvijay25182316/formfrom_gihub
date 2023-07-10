@@ -209,9 +209,15 @@ const Form = () => {
                   required
                 >
                   <option value="">Select an option</option>
-                  <option value="Two Wheeler">Two Wheeler</option>
-                  <option value="Four Wheeler">Four Wheeler</option>
-                  <option value="PMT Bus"> We are coming PMT Bus</option>
+                  <option value="I have my own two wheeler">
+                    I have my own two wheeler
+                  </option>
+                  <option value="I have my own four wheeler">
+                    I have my own four wheeler
+                  </option>
+                  <option value="I do not have a vehicle">
+                    I do not have a vehicle
+                  </option>
                 </select>
                 {errors.travelNeeded && <span>{errors.travelNeeded}</span>}
               </div>
