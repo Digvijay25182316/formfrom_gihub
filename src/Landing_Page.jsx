@@ -41,16 +41,16 @@ function Landingpage() {
         </div>
         <div style={{alignItems:"left",padding:"50px"}}>
           <p style={{textAlign:"center",fontSize:"34px",margin:"40px"}}>Schedule</p>
-      <p className='Schedule'>1.6:00 AM - Arrange at Katraj Bus Stop</p>
-      <p className='Schedule'>2.6:10 AM to 8 AM - Travel Time to ISCKON Rajgad</p>
-      <p className='Schedule'>3.8 AM - Darshan of Deities</p>
-      <p className='Schedule'>4.8:30 AM - Breakfast Prasadam</p>
-      <p className='Schedule'>5.9:00 AM to 11:00 AM - Session #1</p>
-      <p className='Schedule'>6.11:00 to 12:00 PM - Activity Time</p>
-      <p className='Schedule'>7.12:00 PM - Lunch Prasadam</p>
-      <p className='Schedule'>8.12:30 PM to 2 PM - Session #2</p>
-      <p className='Schedule'>9.2 PM to 5:00 PM - Activity Time</p>
-      <p className='Schedule'>10.5:00 PM - Leave Back for Katraj</p>
+      <p className='Schedule'>6:00 AM - Arrange at Katraj Bus Stop</p>
+      <p className='Schedule'>6:10 AM to 8 AM - Travel Time to ISCKON Rajgad</p>
+      <p className='Schedule'>8 AM - Darshan of Deities</p>
+      <p className='Schedule'>8:30 AM - Breakfast Prasadam</p>
+      <p className='Schedule'>9:00 AM to 11:00 AM - Session #1</p>
+      <p className='Schedule'>11:00 to 12:00 PM - Activity Time</p>
+      <p className='Schedule'>12:00 PM - Lunch Prasadam</p>
+      <p className='Schedule'>12:30 PM to 2 PM - Session #2</p>
+      <p className='Schedule'>2 PM to 5:00 PM - Activity Time</p>
+      <p className='Schedule'>5:00 PM - Leave Back for Katraj</p>
         </div>
         <div style={{alignItems:"left",margin:"23px"}}>
           <p style={{textAlign:"center",fontSize:"34px",marginBottom:"50px"}}>Thigs to carry</p>

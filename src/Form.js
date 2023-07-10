@@ -2,6 +2,27 @@ import React, { useState } from "react";
 import pay from "./assets/Pay.jpeg";
 import "./Form.css";
 import { db, collection, addDoc } from "./firebase";
+const prabhus = [
+  "Sujay Nimai Prabhu",
+  "Vikram Prabhu",
+  "Shweta Mataji",
+  "HG Hari Kirtan Prabhu",
+  "HG Ramachandra Prabhu",
+  "HG Vishnu Prabhu",
+  "HG Nitya Seva Prabhu",
+  "HG Mohini Bhakti Mataji",
+  "HG Vrindavan Krishna Prabhu",
+  "HG Jagannath Suta Prabhu",
+  "HG Sudhir Priya Prabhu",
+  "HG Neelkanth Prabhu",
+  "HG Rasamrit Gaur Prabhu",
+  "HG Anupam Gopi Mataji",
+  "HG Parth Pran Prabhu",
+  "HG Achintya Lila Mataji",
+  "HG Srivatsa Chandra Prabhu",
+  "HG Jayanand Krishna Prabhu",
+];
+
 const Form = () => {
   const [isOpen, setIsOpen] = useState(true);
   const [isClicked, setIsClicked] = useState(false);
@@ -140,13 +161,10 @@ const Form = () => {
                   onChange={handleChange}
                 >
                   <option value={""}>Select an option</option>
-                  <option value={"Sujay Nimai"}>Sujay Nimai</option>
-                  <option value={"Rasamrit Gaur Prabhu"}>
-                    Rasamrit Gaur Prabhu
-                  </option>
-                  <option value={"Mukund Anand Prabhu"}>
-                    Mukund Anand Prabhu
-                  </option>
+                  {prabhus &&
+                    prabhus.map((prabhu) => (
+                      <option value={prabhu}>{prabhu}</option>
+                    ))}
                 </select>
               </div>
               <div>
@@ -189,13 +207,9 @@ const Form = () => {
                   required
                 >
                   <option value="">Select an option</option>
+                  <option value="Two Wheeler">Two Wheeler</option>
+                  <option value="Four Wheeler">Four Wheeler</option>
                   <option value="none">none</option>
-                  <option value="Im Comming By Two Wheeler">
-                    Im Comming By Two Wheeler
-                  </option>
-                  <option value="Im Comming By Four Wheeler">
-                    Im Comming By Four Wheeler
-                  </option>
                 </select>
                 {errors.travelNeeded && <span>{errors.travelNeeded}</span>}
               </div>
