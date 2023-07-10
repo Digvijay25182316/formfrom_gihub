@@ -21,7 +21,7 @@ const prabhus = [
   "HG Srivatsa Chandra Prabhu",
   "HG Jayanand Krishna Prabhu",
   "Prateek Kumar Prabhu",
-  "Sujay Nimai Prabhu",
+  "Sujay Nimai Das",
 ];
 
 const Form = () => {
