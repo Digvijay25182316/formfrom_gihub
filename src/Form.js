@@ -118,7 +118,7 @@ const Form = () => {
           <p style={{ background: "lightgray", fontSize: "20px" }}>
             If there is any difficulty or questions, call/message at{" "}
             <a href="tel:9175763244">9175763244</a>
-            (Aarush Prabhu)
+            (Kishore Dhanwate)
           </p>
           <form onSubmit={handleSubmit}>
             <div
