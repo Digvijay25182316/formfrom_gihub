@@ -293,17 +293,20 @@ const Form = () => {
           </div>
           <div
             style={{
-              fontSize: "34px",
+              fontSize: "20px",
               color: "red",
               background: "yellow",
-              height: "150px",
-              width: "150px",
+              height: "fit-content",
+              width: "fit-content",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
               borderRadius: "40px",
+              padding: "23px",
+              gap: "10px",
             }}
           >
+            <b>Registeration Charges</b>
             <b>200 /-</b>
           </div>
           <div>
