@@ -20,6 +20,7 @@ const prabhus = [
   "HG Achintya Lila Mataji",
   "HG Srivatsa Chandra Prabhu",
   "HG Jayanand Krishna Prabhu",
+  "HG Mukund Anand Prabhu",
   "Prateek Kumar Prabhu",
   "Sujay Nimai Das",
   "I do not know my mentor (please help)",
