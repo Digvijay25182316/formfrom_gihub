@@ -39,7 +39,7 @@ function Landingpage() {
             <b>200 /-</b>
           </div>
           <p style={{fontSize:"23px",fontWeight:"bold",color:"red",marginTop:"30px"}}>Registerations are closed</p>
-        <div style={{display:"flex",flexDirection:"column",fontWeight:"bold",color:"red",marginTop:"10px",gap:"5px"}}> <p>Please contact Arush for Registerations</p><a  href='tel:9922326944' style={{textAlign:"center"}}>Arush</a></div>
+        <div style={{display:"flex",flexDirection:"column",fontWeight:"bold",color:"red",marginTop:"10px",gap:"5px"}}> <p>Please contact <a  href='tel:9922326944' style={{fontWeight:"bold"}}>Arush</a> for Registerations</p></div>
         <button disabled={true} style={{textDecorationLine: "underline",fontWeight: "400",fontStyle: "normal",pointerEvents: "all",backgroundColor:"yellow",border:"none",fontSize:"20px",borderRadius:"20px",marginTop:"20px"}}><li  href='#' className="registerLink">Click Here to Register Now</li></button>
 
         <div style={{display:"flex",flexDirection:"column",alignItems:"center" ,gap:"20px"}}>
