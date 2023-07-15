@@ -38,7 +38,8 @@ function Landingpage() {
             <b>Registeration Charges</b>
             <b>200 /-</b>
           </div>
-        <button style={{textDecorationLine: "underline",fontWeight: "400",fontStyle: "normal",pointerEvents: "all",backgroundColor:"yellow",border:"none",fontSize:"20px",padding:"10px 20px",borderRadius:"20px",marginTop:"50px"}}><a href='/form' className="registerLink">Click Here to Register Now</a></button>
+          <p style={{fontSize:"23px",fontWeight:"bold",color:"red",marginTop:"30px"}}>Registerations are closed</p>
+        <button disabled={true} style={{textDecorationLine: "underline",fontWeight: "400",fontStyle: "normal",pointerEvents: "all",backgroundColor:"yellow",border:"none",fontSize:"20px",borderRadius:"20px",marginTop:"20px"}}><li  href='#' className="registerLink">Click Here to Register Now</li></button>
 
         <div style={{display:"flex",flexDirection:"column",alignItems:"center" ,gap:"20px"}}>
             <h1 className='photosprevious' style={{fontSize:"23px",marginTop:"30px"}}>Photos from previous trip</h1>
