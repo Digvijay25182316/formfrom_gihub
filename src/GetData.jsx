@@ -28,7 +28,7 @@ function GetData() {
     { field: 'numberOfMembers', headerName: 'Number of Adults', type: 'number' ,width:150},
     { field: 'noOfkids', headerName: 'Number of Kids', type: 'number',width:150 },
     { field: 'travelNeeded', headerName: 'Travel Needed',width:300 },
-    { field: 'questions', headerName: 'Questions',width:100 },
+    { field: 'questions', headerName: 'Questions',width:200 },
   ];
 
   return (
