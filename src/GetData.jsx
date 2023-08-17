@@ -14,7 +14,6 @@ function GetData() {
           dataset.push({ id:doc.id, ...doc.data().formdata});
         });
         setDataRows(dataset)
-        console.log(dataset)
       } catch (err) {
         console.log(err);
       }
