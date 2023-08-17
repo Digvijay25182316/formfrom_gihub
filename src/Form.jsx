@@ -32,8 +32,6 @@ const Form = () => {
       });
     }
   };
-  console.log(formData.program)
-  
 
   const handleChange = (e) => {
     setFormData({
@@ -46,10 +44,11 @@ const Form = () => {
     const docRef = await addDoc(collection(db, "users"), { formdata });
     return docRef;
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if(formData){
-    storedata(formData)}
+    storedata(formData).then(data=>window.alert("successfully submitted")).catch(err=>window.alert("Resubmit the form"))}
     
   };
   return (

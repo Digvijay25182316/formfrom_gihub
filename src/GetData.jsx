@@ -14,6 +14,7 @@ function GetData() {
           dataset.push({ id:doc.id, ...doc.data().formdata});
         });
         setDataRows(dataset)
+        console.log(dataset)
       } catch (err) {
         console.log(err);
       }
@@ -22,13 +23,13 @@ function GetData() {
   }, []);
 
   const columns = [
-    { field: 'fullName', headerName: 'Name' ,width:270},
-    { field: 'mentorName', headerName: 'Mentor Name' ,width:200},
-    { field: 'phoneNumber', headerName: 'Phone Number' ,width:150},
-    { field: 'numberOfMembers', headerName: 'Number of Adults', type: 'number' ,width:150},
-    { field: 'noOfkids', headerName: 'Number of Kids', type: 'number',width:150 },
-    { field: 'travelNeeded', headerName: 'Travel Needed',width:300 },
-    { field: 'questions', headerName: 'Questions',width:200 },
+    { field: 'Fullname', headerName: 'Name' ,width:270},
+    { field: 'PhoneNumber', headerName: 'Phone Number' ,width:150},
+    { field: 'email', headerName: 'Email' ,width:150},
+    { field: 'gender', headerName: 'Gender',width:150 },
+    { field: 'city', headerName: 'City',width:150},
+    { field: 'language', headerName: 'Language',width:300 },
+    { field: 'program', headerName: 'Program',width:200 },
   ];
 
   return (
