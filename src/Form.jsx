@@ -7,7 +7,6 @@ const Form = () => {
   const [formData, setFormData] = useState({
     Fullname: "",
     PhoneNumber: "",
-    email: "",
     city: "",
     language:"",
     gender: "",
@@ -55,7 +54,6 @@ const Form = () => {
       setFormData({
         Fullname: "",
         PhoneNumber: "",
-        email: "",
         city: "",
         language:"",
         gender: "",
@@ -79,10 +77,6 @@ const Form = () => {
             <div className="md:w-[40vw]  w-80 mx-auto flex flex-col gap-3 ">
               <label className="text-xl font-bold" htmlFor="phone number">Enter your Phone number <i className="text-bold text-red-500">*</i></label>              
               <input onChange={handleChange} name="PhoneNumber" type="number" className="border shadow-sm hover:shadow-md drop-shadow-sm px-5 py-2 rounded-xl focus:outline-yellow-600" required maxLength={10}/>
-            </div>
-            <div className="md:w-[40vw]  w-80 mx-auto flex flex-col gap-3 ">
-              <label className="text-xl font-bold" htmlFor="email">Enter your email <i className="text-bold text-red-500">*</i></label>              
-              <input onChange={handleChange} name="email" type="email" className="border shadow-sm hover:shadow-md drop-shadow-sm px-5 py-2 rounded-xl focus:outline-yellow-600" required/>
             </div>
             <div className="md:w-[40vw]  w-80 mx-auto flex flex-col gap-3 ">
               <label className="text-xl font-bold" htmlFor="language">Your preferred language <i className="text-bold text-red-500">*</i></label>              
