@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { db, collection, addDoc } from "./firebase";
+import { useNavigate } from "react-router-dom";
 
 const Form = () => {
+  const navigate =useNavigate()
   const [formData, setFormData] = useState({
     Fullname: "",
     PhoneNumber: "",
@@ -48,7 +50,19 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if(formData){
-    storedata(formData).then(data=>window.alert("successfully submitted")).catch(err=>window.alert("Resubmit the form"))}
+    storedata(formData).then(data=>{
+      window.alert("successfully submitted")
+      setFormData({
+        Fullname: "",
+        PhoneNumber: "",
+        email: "",
+        city: "",
+        language:"",
+        gender: "",
+        program:[],
+      })
+      navigate("/")
+    }).catch(err=>window.alert("Resubmit the form"))}
     
   };
   return (
@@ -99,12 +113,12 @@ const Form = () => {
                       type="checkbox"
                       required
                       name="program"
-                      value="Gitasaar For Boys Program"
+                      value="Gitasar Temple program (Summary Study of Bhagvada Gita)"
                       onChange={handleProgramCheckboxChange}
                       className="w-5"
-                      disabled={formData.program.length>0&&formData.program[0]!=="Gitasaar For Boys Program"}
+                      disabled={formData.program.length>0&&formData.program[0]!=="Gitasar Temple program (Summary Study of Bhagvada Gita)"}
                     />
-                    Gitasaar For Boys Program
+                    Gitasar Temple program (Summary Study of Bhagvada Gita)
                   </label>
                 </div>
                 <div className="flex flex-col gap-3 text-xl font-bold">
@@ -113,13 +127,13 @@ const Form = () => {
                       type="checkbox"
                       required
                       name="program"
-                      value="Gitasaar For Girls Program"
+                      value="CHILDREN Value Education"
                       onChange={handleProgramCheckboxChange}
                       className="w-5"
-                      disabled={formData.program.length>0&&formData.program[0]!=="Gitasaar For Girls Program"}
+                      disabled={formData.program.length>0&&formData.program[0]!=="CHILDREN Value Education"}
                       // checked={formData.program==="Gitasaar For Girls Program"}
                     />
-                    Gitasaar For Girls Program
+                    CHILDREN Value Education
                   </label>
               </div>
               <div className="flex flex-col gap-3 text-xl font-bold">
@@ -128,12 +142,12 @@ const Form = () => {
                       type="checkbox"
                       required
                       name="program"
-                      value="Gitasaar For Family Program"
+                      value="Host program at your Society "
                       onChange={handleProgramCheckboxChange}
                       className="w-5"
-                      disabled={formData.program.length>0&&formData.program[0]!=="Gitasaar For Family Program"}
+                      disabled={formData.program.length>0&&formData.program[0]!=="Host program at your Society "}
                     />
-                    Gitasaar For Family Program
+                    Host program at your Society 
                   </label>
               </div>
               <div className="flex flex-col gap-3 text-xl font-bold">
@@ -142,40 +156,12 @@ const Form = () => {
                       type="checkbox"
                       required
                       name="program"
-                      value="Children's value education program"
+                      value=" Daily Book Reading online (SPORT)"
                       onChange={handleProgramCheckboxChange}
                       className="w-5"
-                      disabled={formData.program.length>0&&formData.program[0]!=="Children's value education program"}
+                      disabled={formData.program.length>0&&formData.program[0]!==" Daily Book Reading online (SPORT)"}
                     />
-                    Children&apos;s value education program
-                  </label>
-              </div>
-              <div className="flex flex-col gap-3 text-xl font-bold">
-                  <label>
-                    <input
-                      type="checkbox"
-                      required
-                      name="program"
-                      value="Gitasaar at Society Program"
-                      onChange={handleProgramCheckboxChange}
-                      className="w-5"
-                      disabled={formData.program.length>0&&formData.program[0]!=="Gitasaar at Society Program"}
-                    />
-                    Gitasaar at Society Program
-                  </label>
-              </div>
-              <div className="flex flex-col gap-3 text-xl font-bold">
-                  <label>
-                    <input
-                      type="checkbox"
-                      required
-                      name="program"
-                      value="Daily Morening reading/meditation"
-                      onChange={handleProgramCheckboxChange}
-                      className="w-5"
-                      disabled={formData.program.length>0&&formData.program[0]!=="Daily Morening reading/meditation"}
-                    />
-                    Daily Morning reading/meditation
+                     Daily Book Reading online (SPORT)
                   </label>
               </div>
             </div>
