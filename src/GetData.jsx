@@ -29,7 +29,7 @@ function GetData() {
     { field: "age", headerName: "Age", width: 150 },
     { field: "city", headerName: "City", width: 150 },
     { field: "language", headerName: "Language", width: 300 },
-    { field: "program", headerName: "Program", width: 200 },
+    { field: "program", headerName: "Program", width: 1200 },
   ];
 
   return (

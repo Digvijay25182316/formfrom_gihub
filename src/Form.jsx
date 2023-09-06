@@ -13,33 +13,29 @@ const Form = () => {
     age: "",
     program: [],
   });
-  const handleProgramCheckboxChange = (e) => {
-    const selectedProgram = e.target.value;
-    const isChecked = e.target.checked;
-
-    // If the current checkbox is checked, uncheck all other checkboxes
-    if (isChecked) {
-      const updatedProgram = [selectedProgram];
-      setFormData({
-        ...formData,
-        program: updatedProgram,
-        isCheckboxChecked: isChecked,
-      });
-    } else {
-      // If the current checkbox is unchecked, reset the state
-      setFormData({
-        ...formData,
-        program: [],
-        isCheckboxChecked: isChecked,
-      });
-    }
-  };
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value, type, checked } = e.target;
+
+    // Handle checkbox inputs separately
+    if (type === "checkbox") {
+      if (checked) {
+        setFormData({
+          ...formData,
+          program: [...formData.program, value],
+        });
+      } else {
+        setFormData({
+          ...formData,
+          program: formData.program.filter((item) => item === value),
+        });
+      }
+    } else {
+      setFormData({
+        ...formData,
+        [name]: value,
+      });
+    }
   };
 
   const storedata = async (formdata) => {
@@ -171,22 +167,16 @@ const Form = () => {
               </div>
               <div className="md:w-[40vw]  w-80 mx-auto flex flex-col gap-3 ">
                 <div className="text-xl font-bold" htmlFor="program_name">
-                  Which program you want to enrol in
+                  Which program(s) you want to enrol in
                 </div>
                 <div className="flex flex-col gap-3 text-xl font-bold">
                   <label>
                     <input
                       type="checkbox"
-                      required
                       name="program"
                       value="Gitasar Temple program (Summary Study of Bhagvada Gita)"
-                      onChange={handleProgramCheckboxChange}
+                      onChange={handleChange}
                       className="w-5"
-                      disabled={
-                        formData.program.length > 0 &&
-                        formData.program[0] !==
-                          "Gitasar Temple program (Summary Study of Bhagvada Gita)"
-                      }
                     />
                     Gitasar Temple program (Summary Study of Bhagvada Gita)
                   </label>
@@ -195,15 +185,11 @@ const Form = () => {
                   <label>
                     <input
                       type="checkbox"
-                      required
                       name="program"
                       value="CHILDREN Value Education"
-                      onChange={handleProgramCheckboxChange}
+                      onChange={handleChange}
                       className="w-5"
-                      disabled={
-                        formData.program.length > 0 &&
-                        formData.program[0] !== "CHILDREN Value Education"
-                      }
+
                       // checked={formData.program==="Gitasaar For Girls Program"}
                     />
                     CHILDREN Value Education
@@ -213,15 +199,10 @@ const Form = () => {
                   <label>
                     <input
                       type="checkbox"
-                      required
                       name="program"
                       value="Host program at your Society "
-                      onChange={handleProgramCheckboxChange}
+                      onChange={handleChange}
                       className="w-5"
-                      disabled={
-                        formData.program.length > 0 &&
-                        formData.program[0] !== "Host program at your Society "
-                      }
                     />
                     Host program at your Society
                   </label>
@@ -230,16 +211,10 @@ const Form = () => {
                   <label>
                     <input
                       type="checkbox"
-                      required
                       name="program"
                       value=" Daily Book Reading online (SPORT)"
-                      onChange={handleProgramCheckboxChange}
+                      onChange={handleChange}
                       className="w-5"
-                      disabled={
-                        formData.program.length > 0 &&
-                        formData.program[0] !==
-                          " Daily Book Reading online (SPORT)"
-                      }
                     />
                     Daily Book Reading online (SPORT)
                   </label>
