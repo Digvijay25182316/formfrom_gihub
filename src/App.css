@@ -13,3 +13,17 @@
 p{
   font-weight: 300;
 }
+
+/* styles/globals.css */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Optional: Add styles for other scrollbar properties (e.g., thumb) */
+::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
