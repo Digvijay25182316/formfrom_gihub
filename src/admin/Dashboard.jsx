@@ -75,11 +75,11 @@ function Dashboard() {
           </button>
         </form>
         <div
-          className={`overflow-scroll scrollbar-hide ${
+          className={`overflow-scroll scrollbar-hide w-[95vw] m-auto ${
             dark ? "text-yellow-200 py-5" : "text-gray-800 py-5"
           }`}
         >
-          <table className="m-auto">
+          <table className="m-auto min-w-max">
             <thead>
               <tr>
                 <th className="border border-gray-400">index</th>
@@ -90,6 +90,7 @@ function Dashboard() {
                 <th className="border border-gray-400">city</th>
                 <th className="border border-gray-400">language</th>
                 <th className="border border-gray-400">program</th>
+                <th className="border border-gray-400">Add Events</th>
                 <th className="border border-gray-400">delete</th>
               </tr>
             </thead>
@@ -98,24 +99,47 @@ function Dashboard() {
                 <tr
                   key={item.id}
                   onClick={() => {
-                    navigate(`/admin/event/${item.id}`);
                     Cookies.setItem("eventFor", item.Fullname);
                   }}
-                  className="cursor-pointer"
+                  className="cursor-pointer w-full"
                 >
                   <td className="border border-gray-400">
                     {(index + 1).toString()}
                   </td>
-                  <td className="border border-gray-400">{item.Fullname}</td>
-                  <td className="border border-gray-400">{item.PhoneNumber}</td>
-                  <td className="border border-gray-400">{item.gender}</td>
-                  <td className="border border-gray-400">{item.age}</td>
-                  <td className="border border-gray-400">{item.city}</td>
-                  <td className="border border-gray-400">{item.language}</td>
-                  <td className="border border-gray-400">
+                  <td className="border border-gray-400 min-w-max px-3">
+                    {item.Fullname}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-3">
+                    {item.PhoneNumber}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-3">
+                    {item.gender}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-3">
+                    {item.age}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-3">
+                    {item.city}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-3">
+                    {item.language}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-3">
                     {item.program?.map((item, index) => (
                       <p key={index}>{item}</p>
                     ))}
+                  </td>
+                  <td className="border border-gray-400">
+                    <button
+                      className={
+                        dark
+                          ? `bg-gray-700 px-3 py-1 rounded-lg mx-2`
+                          : "bg-gray-200 px-3 py-1 rounded-lg mx-2"
+                      }
+                      onClick={() => navigate(`/admin/event/${item.id}`)}
+                    >
+                      Go Events
+                    </button>
                   </td>
                   <td className="border border-gray-400">
                     <DeleteModal

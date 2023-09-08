@@ -6,12 +6,15 @@ import { BsMoonFill } from "react-icons/bs";
 import { RxCross1 } from "react-icons/rx";
 import { useAppContext } from "../context/store";
 import Cookies from "js-cookies";
+import toast from "react-hot-toast";
 
 function Header() {
-  const { dark, Authenticated, isAdmin, togglemode } = useAppContext();
+  const { dark, Authenticated, isAdmin, togglemode, logout } = useAppContext();
   const location = useLocation();
   const handleLogout = () => {
     Cookies.removeItem("token");
+    logout();
+    toast.success("successfully logged out");
   };
   return (
     <header

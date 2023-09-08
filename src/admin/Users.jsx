@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/store";
-import { collection, doc, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { getAuth } from "firebase/auth";
+import toast from "react-hot-toast";
 
 function Users() {
   const [data, setDataRows] = useState([]);
@@ -26,6 +27,12 @@ function Users() {
       )
     );
     setDataRows(filteredData);
+  }
+
+  function handleDelete(id) {
+    deleteDoc(doc(db, "actUser", id)).then((data) =>
+      toast.success("deleted successfully")
+    );
   }
   return (
     <div className={`min-h-screen`}>
@@ -62,7 +69,7 @@ function Users() {
             dark ? "text-yellow-200 py-5" : "text-gray-800 py-5"
           }`}
         >
-          <table className="m-auto">
+          <table className="m-auto min-w-max">
             <thead>
               <tr>
                 <th className="border border-gray-400">index</th>
@@ -77,10 +84,18 @@ function Users() {
                   <td className="border border-gray-400">
                     {(index + 1).toString()}
                   </td>
-                  <td className="border border-gray-400 ">{item.name}</td>
-                  <td className="border border-gray-400 ">{item.email}</td>
-                  <td className="border border-gray-400 ">
-                    <DeleteModal dark={dark} />
+                  <td className="border border-gray-400 min-w-max px-5">
+                    {item.name}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-5">
+                    {item.email}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-5">
+                    <DeleteModal
+                      dark={dark}
+                      id={item.id}
+                      handleDelete={handleDelete}
+                    />
                   </td>
                 </tr>
               ))}
@@ -94,15 +109,17 @@ function Users() {
 
 export default Users;
 
-function DeleteModal({ dark, handleDelete }) {
+function DeleteModal({ dark, handleDelete, id }) {
   const [isopen, setIsOpen] = useState(false);
   const handleChange = () => {
     setIsOpen(!isopen);
+    handleDelete(id);
   };
+
   return (
     <>
       <button
-        className={`px-3 py-1 rounded-md m-2 ${
+        className={`px-3 py-1 rounded-md m-2 text-md ${
           dark ? "bg-gray-600" : "bg-gray-200"
         }`}
         onClick={handleChange}

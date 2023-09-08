@@ -46,7 +46,7 @@ function Login() {
                 type="email"
                 name="email"
                 placeholder="jondoe@email.com"
-                className="w-full px-3 py-1 rounded-lg drop-shadow-lg focus:outline-gray-400"
+                className="w-full px-3 py-1 rounded-lg drop-shadow-lg focus:outline-gray-400 text-gray-800"
                 required
               />
             </label>
@@ -56,7 +56,7 @@ function Login() {
                 type="password"
                 name="password"
                 placeholder="jondoe@email.com"
-                className="w-full px-3 py-1 rounded-lg drop-shadow-lg focus:outline-gray-400"
+                className="w-full px-3 py-1 rounded-lg drop-shadow-lg focus:outline-gray-400 text-gray-800"
                 required
               />
             </label>

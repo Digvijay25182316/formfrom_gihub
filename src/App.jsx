@@ -11,7 +11,6 @@ import Register from "./admin/Register";
 import Dashboard from "./admin/Dashboard";
 import Events from "./admin/Events";
 import Users from "./admin/Users";
-import IsAuthenticated from "./IsAuthenticated";
 import { useAppContext } from "./context/store";
 import { Toaster } from "react-hot-toast";
 import Protected from "./IsAuthenticated";
