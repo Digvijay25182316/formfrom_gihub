@@ -3,7 +3,6 @@ import "./App.css";
 import Form from "./Form";
 import Landingpage from "./Landing_Page";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import GetData from "./GetData";
 import Footer from "./Footer";
 import Header from "./Components/Header";
 import Login from "./admin/Login";
@@ -29,7 +28,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Landingpage />} />
           <Route path="/form" element={<Form />} />
-          <Route path="/getdata" element={<GetData />} />
           <Route path="/admin/login" element={<Login />} />
           <Route
             path="/api/v1/admin/register"
