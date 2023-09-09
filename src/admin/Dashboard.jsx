@@ -5,6 +5,7 @@ import { db } from "../firebase";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookies";
+import ExportCsv from "../Components/ExportContext";
 
 function Dashboard() {
   const [data, setDataRows] = useState([]);
@@ -48,32 +49,35 @@ function Dashboard() {
     <div className={`min-h-screen flex justify-center`}>
       <div className="w-[95vw] lg:w-full">
         <h1 className="pt-20 text-xl ml-20">Dashboard</h1>
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            filteredData();
-          }}
-          className="flex items-center gap-3 ml-5 mt-10"
-        >
-          <input
-            type="text"
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className={`px-3 py-1 rounded-lg text-gray-900 focus:outline-0 ${
-              dark ? "bg-gray-600" : "bg-gray-100"
-            }`}
-            value={searchTerm}
-          />
-          <button
-            type="submit"
-            className={
-              dark
-                ? `bg-gray-600 px-3 py-1 rounded-lg`
-                : "bg-gray-100 px-3 py-1 rounded-lg"
-            }
+        <div className="flex justify-between">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              filteredData();
+            }}
+            className="flex items-center gap-3 ml-5 mt-10"
           >
-            search
-          </button>
-        </form>
+            <input
+              type="text"
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className={`px-3 py-1 rounded-lg text-gray-900 focus:outline-0 ${
+                dark ? "bg-gray-600" : "bg-gray-100"
+              }`}
+              value={searchTerm}
+            />
+            <button
+              type="submit"
+              className={
+                dark
+                  ? `bg-gray-600 px-3 py-1 rounded-lg`
+                  : "bg-gray-100 px-3 py-1 rounded-lg"
+              }
+            >
+              search
+            </button>
+          </form>
+          <ExportCsv data={data} />
+        </div>
         <div
           className={`overflow-scroll scrollbar-hide w-[95vw] m-auto ${
             dark ? "text-yellow-200 py-5" : "text-gray-800 py-5"
