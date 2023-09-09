@@ -55,7 +55,7 @@ function Login() {
               <input
                 type="password"
                 name="password"
-                placeholder="jondoe@email.com"
+                placeholder="password"
                 className="w-full px-3 py-1 rounded-lg drop-shadow-lg focus:outline-gray-400 text-gray-800"
                 required
               />
