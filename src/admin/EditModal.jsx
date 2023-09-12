@@ -19,6 +19,7 @@ function EditModal({ data }) {
     gender: data.gender,
     age: data.age,
     program: data.program,
+    date: data.date,
   });
 
   const updatedFormData = useRef({});
@@ -37,6 +38,7 @@ function EditModal({ data }) {
         gender: updatedFormData.current?.gender?.value,
         age: updatedFormData.current?.age?.value,
         program: [updatedFormData.current?.program?.value],
+        date: FormRef?.current?.date,
       },
     })
       .then((data) => {

@@ -14,6 +14,7 @@ const Form = () => {
     gender: "",
     age: "",
     program: [],
+    date: new Date().toUTCString(),
   });
 
   const handleChange = (e) => {

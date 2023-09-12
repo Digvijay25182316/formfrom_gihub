@@ -99,6 +99,7 @@ function Dashboard() {
                 <th className="border border-gray-400">city</th>
                 <th className="border border-gray-400">language</th>
                 <th className="border border-gray-400">program</th>
+                <th className="border border-gray-400">datedAt</th>
                 <th className="border border-gray-400">Edit Fields</th>
                 <th className="border border-gray-400">Add Events</th>
                 <th className="border border-gray-400">delete</th>
@@ -144,6 +145,9 @@ function Dashboard() {
                     {item.program?.map((item, index) => (
                       <p key={index}>{item}</p>
                     ))}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-3">
+                    {item?.date?.toString().split("G")[0]}
                   </td>
                   <td className="border border-gray-400">
                     <EditModal data={item} />
