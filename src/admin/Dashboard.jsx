@@ -6,12 +6,14 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookies";
 import ExportCsv from "../Components/ExportContext";
+import EditModal from "./EditModal";
 
 function Dashboard() {
   const [data, setDataRows] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const { dark } = useAppContext();
   const navigate = useNavigate();
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,11 +24,12 @@ function Dashboard() {
         });
         setDataRows(dataset);
       } catch (err) {
-        console.log(err);
+        console.log(err.message);
       }
     };
     fetchData();
   }, []);
+
   const handleDelete = async (id) => {
     await deleteDoc(doc(db, "users", id))
       .then((data) => {
@@ -89,11 +92,14 @@ function Dashboard() {
                 <th className="border border-gray-400">index</th>
                 <th className="border border-gray-400">name</th>
                 <th className="border border-gray-400">phone</th>
+                <th className="border border-gray-400">mentor</th>
+                <th className="border border-gray-400">roundschanting</th>
                 <th className="border border-gray-400">gender</th>
                 <th className="border border-gray-400">age</th>
                 <th className="border border-gray-400">city</th>
                 <th className="border border-gray-400">language</th>
                 <th className="border border-gray-400">program</th>
+                <th className="border border-gray-400">Edit Fields</th>
                 <th className="border border-gray-400">Add Events</th>
                 <th className="border border-gray-400">delete</th>
               </tr>
@@ -117,6 +123,12 @@ function Dashboard() {
                     {item.PhoneNumber}
                   </td>
                   <td className="border border-gray-400 min-w-max px-3">
+                    {item?.mentor ? item?.mentor : "no-value"}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-3">
+                    {item?.roundschanting ? item?.roundschanting : "no-value"}
+                  </td>
+                  <td className="border border-gray-400 min-w-max px-3">
                     {item.gender}
                   </td>
                   <td className="border border-gray-400 min-w-max px-3">
@@ -132,6 +144,9 @@ function Dashboard() {
                     {item.program?.map((item, index) => (
                       <p key={index}>{item}</p>
                     ))}
+                  </td>
+                  <td className="border border-gray-400">
+                    <EditModal data={item} />
                   </td>
                   <td className="border border-gray-400">
                     <button

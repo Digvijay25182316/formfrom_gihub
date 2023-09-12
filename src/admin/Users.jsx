@@ -2,13 +2,10 @@ import React, { useCallback, useState } from "react";
 import { useAppContext } from "../context/store";
 import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { getAuth } from "firebase/auth";
 import toast from "react-hot-toast";
 
 function Users() {
   const [data, setDataRows] = useState([]);
-  const user = getAuth().currentUser;
-  console.log(user);
   const [searchTerm, setSearchTerm] = useState("");
   const { dark } = useAppContext();
   useCallback(async () => {

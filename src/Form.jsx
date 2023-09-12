@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { db, collection, addDoc } from "./firebase";
 import { useNavigate } from "react-router-dom";
+import { getDocs, where, query } from "firebase/firestore";
+import toast from "react-hot-toast";
 
 const Form = () => {
   const navigate = useNavigate();
@@ -43,23 +45,35 @@ const Form = () => {
     return docRef;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (formData) {
-      storedata(formData)
-        .then((data) => {
-          window.alert("successfully submitted");
-          setFormData({
-            Fullname: "",
-            PhoneNumber: "",
-            city: "",
-            language: "",
-            gender: "",
-            program: [],
-          });
-          navigate("/");
-        })
-        .catch((err) => window.alert("Resubmit the form"));
+      const collectenrolled = collection(db, "users");
+      const querenrolled = query(
+        collectenrolled,
+        where("formdata.PhoneNumber", "==", formData.PhoneNumber.toString())
+      );
+      const querySnapshot2 = await getDocs(querenrolled);
+      if (querySnapshot2.docs.length > 0) {
+        return toast.error(
+          "devotee associated with this phone number already exists"
+        );
+      } else {
+        await storedata(formData)
+          .then((data) => {
+            window.alert("successfully submitted");
+            setFormData({
+              Fullname: "",
+              PhoneNumber: "",
+              city: "",
+              language: "",
+              gender: "",
+              program: [],
+            });
+            navigate("/");
+          })
+          .catch((err) => window.alert("Resubmit the form"));
+      }
     }
   };
   return (
