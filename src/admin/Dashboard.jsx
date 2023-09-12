@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAppContext } from "../context/store";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, db2 } from "../firebase";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import Cookies from "js-cookies";
@@ -18,8 +18,12 @@ function Dashboard() {
     const fetchData = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "users"));
+        const querySnapshot2 = await getDocs(collection(db2, "users"));
         const dataset = [];
         querySnapshot.forEach((doc, i) => {
+          dataset.push({ id: doc.id, ...doc.data().formdata });
+        });
+        querySnapshot2.forEach((doc, i) => {
           dataset.push({ id: doc.id, ...doc.data().formdata });
         });
         setDataRows(dataset);
@@ -31,6 +35,13 @@ function Dashboard() {
   }, []);
 
   const handleDelete = async (id) => {
+    await deleteDoc(doc(db2, "users", id))
+      .then((data) => {
+        toast.success("deleted successfully");
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
     await deleteDoc(doc(db, "users", id))
       .then((data) => {
         toast.success("deleted successfully");
