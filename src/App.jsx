@@ -8,6 +8,7 @@ import Header from "./Components/Header";
 import Login from "./admin/Login";
 import Register from "./admin/Register";
 import Dashboard from "./admin/Dashboard";
+import Dashboard2 from "./admin/Dashboard2";
 import Events from "./admin/Events";
 import Users from "./admin/Users";
 import { useAppContext } from "./context/store";
@@ -42,6 +43,14 @@ function App() {
             element={
               <Protected isLoggedIn={Authenticated}>
                 <Dashboard />
+              </Protected>
+            }
+          />
+          <Route
+            path="/admin/dashboard/page2"
+            element={
+              <Protected isLoggedIn={Authenticated}>
+                <Dashboard2 />
               </Protected>
             }
           />

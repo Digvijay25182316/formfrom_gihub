@@ -24,7 +24,6 @@ function EditModal({ data }) {
 
   const updatedFormData = useRef({});
 
-  console.log(FormRef);
   const handleSubmit = async (e) => {
     e.preventDefault();
     await setDoc(doc(db, "users", data.id), {
