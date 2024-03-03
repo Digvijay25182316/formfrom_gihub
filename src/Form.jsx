@@ -169,8 +169,7 @@ const Form = () => {
               </div>
               <div className="md:w-[40vw]  w-80 mx-auto flex flex-col gap-3 ">
                 <label className="text-xl font-bold" htmlFor="City">
-                  Location (enter the name of your city){" "}
-                  <i className="text-bold text-red-500">*</i>
+                  Exact Address<i className="text-bold text-red-500">*</i>
                 </label>
                 <input
                   onChange={handleChange}
